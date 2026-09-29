@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Vibra Familiar - TikTok Login Callback</title>
+</head>
+<body style="font-family:Arial,Helvetica,sans-serif;max-width:700px;margin:40px auto;padding:0 20px;">
+<h1>Autorizacion recibida</h1>
+<p>Este es el redirect URI interno de la app "Vibra Familiar Publisher" para el flujo de Login Kit de TikTok (uso en Sandbox para pruebas y demo de auditoria).</p>
+<p id="out">Leyendo parametros...</p>
+<script>
+var params = new URLSearchParams(window.location.search);
+var code = params.get('code');
+var state = params.get('state');
+var errorParam = params.get('error');
+var out = document.getElementById('out');
+if (code) {
+  out.innerHTML = '<b>code:</b><br><textarea style="width:100%;height:80px">' + code + '</textarea><br><b>state:</b> ' + (state || '(ninguno)');
+} else if (errorParam) {
+  out.innerHTML = 'Error de autorizacion: ' + errorParam;
+} else {
+  out.innerHTML = 'No se recibio ningun parametro de autorizacion.';
+}
+</script>
+</body>
+</html>
